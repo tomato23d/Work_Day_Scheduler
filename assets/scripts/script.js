@@ -2,6 +2,9 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(document).ready(function(){});
+
+var hour = $("#hour-9");
+var day = $(".container-lg"); 
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -24,3 +27,18 @@ $(function () {
 });
 
 $("#currentDay").text(dayjs().format('[Today is] D MMMM YYYY [,] dddd'));
+$("#currentTime").text(dayjs().format('[Time Now:] H mm'));
+console.log(dayjs().format('HH'));
+
+var divHour = document.createElement("div"); 
+//divHour.id = "hour";
+//$("#hour").addClass('row time-block present');
+//divHour.addClass('row time-block present');
+//divHour.text("this is one hour");
+day.append(divHour);
+
+console.log(day);
+console.log(divHour);
+console.log(hour);
+hour.clone().appendTo(day);
+
