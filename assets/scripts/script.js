@@ -4,9 +4,14 @@
 $(document).ready(function(){});
 
 const workhours = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm"] 
-var day = $(".container_day1"); 
-var hour =$("#hour");
+var day = $(".container_day1");
+//var hour =document.getElementById("hour"); 
+var hour = $ ("#hour"); 
+var hourPast =$(".past");
+var hourPresent =$(".present");
+var hourFuture =$(".future");
 var btnNextHour = $("#nextHour");
+var currentTime = dayjs().format('ha')
 
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should use the id in the containing time-block as a key to save the user input in local storage. HINT: What does `this` reference in the click listener
@@ -25,19 +30,41 @@ $(function () {
 
 $("#currentDay").text(dayjs().format('[Today is] D MMMM YYYY [,] dddd'));
 $("#currentTime").text(dayjs().format('[Time Now:] H [:] mm'));
-console.log(dayjs().format('HH'));
+console.log(currentTime);
 
 function populateTask (){
   for (let h=0; h<workhours.length; h++){
       $("#entryHour").clone().appendTo(hour);
       $("#task").clone().appendTo(hour);
       $("#saveBtn").clone().appendTo(hour);
-      $("#entryHour").text(workhours[h]);
-  } ;
-  
+      $("#entryHour").text(workhours[h]);     
+  } ;  
 };
 
+function reviewTime(){
+  for (let h=0; h<workhours.length; h++){
+          if(workhours[h]===(currentTime)){
+          hour.appendTo(hourPast);};}}
+
+          function reviewTime(){
+            for (let h=0; h<workhours.length; h++){
+                   if(workhours[h]>currentTime){
+                    hour.setAttribute("class", "future");
+                    console.log("future: " + h)
+                  }
+                  else if (workhours[h]<currentTime){
+                    hour.setAttribute("class", "past");
+                    console.log("past : " + workhours[h]);
+                  }
+                  else if (workhours[h]===currentTime){
+                    hour.setAttribute("class", "present");
+                   console.log("present : " +workhours[h]);
+          }
+          };}
+          
+
 populateTask();
+reviewTime();
 
 
 

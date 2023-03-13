@@ -71,7 +71,7 @@
     <div class="container-lg px-5">
       <div class="container_day1">
           <h2> new</h2>
-          <div id="hour" class="row time-block past">
+          <div id="hour" class="row time-block future">
               <div id = "entryHour" class="hour col-2 col-md-1 text-center py-3"></div>
               <textarea id = "task" class="description col-8 col-md-10 " rows="3"> </textarea>
               <button id = "saveBtn" class="saveBtn btn col-2 col-md-1" aria-label="save">
@@ -79,6 +79,8 @@
               </button>
         </div>
 
+        <div id="hour" class="row time-block past"> </div>
+        <div id="hour" class="row time-block present"> </div>
             <button id = "nextHour" class = "saveBtn btn"></button>
 
       </div>
