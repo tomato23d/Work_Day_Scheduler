@@ -11,7 +11,9 @@ var hourPast =$(".past");
 var hourPresent =$(".present");
 var hourFuture =$(".future");
 var btnNextHour = $("#nextHour");
-var currentTime = dayjs().format('ha')
+//var currentTime = dayjs().format('ha');
+var currentTime = "12pm";
+var dayy = $("#currentDay")+1;
 
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should use the id in the containing time-block as a key to save the user input in local storage. HINT: What does `this` reference in the click listener
@@ -31,6 +33,7 @@ $(function () {
 $("#currentDay").text(dayjs().format('[Today is] D MMMM YYYY [,] dddd'));
 $("#currentTime").text(dayjs().format('[Time Now:] H [:] mm'));
 console.log(currentTime);
+console.log(dayy);
 
 function populateTask (){
   for (let h=0; h<workhours.length; h++){
@@ -40,32 +43,26 @@ function populateTask (){
       $("#entryHour").text(workhours[h]);     
   } ;  
 };
-
-function reviewTime(){
-  for (let h=0; h<workhours.length; h++){
-          if(workhours[h]===(currentTime)){
-          hour.appendTo(hourPast);};}}
-
-          function reviewTime(){
-            for (let h=0; h<workhours.length; h++){
-                   if(workhours[h]>currentTime){
-                    hour.setAttribute("class", "future");
-                    console.log("future: " + h)
+  function reviewTime(){
+     for (let h=0; h<workhours.length; h++){
+            if(workhours[h]>currentTime){
+             // hour.setAttribute("class", "future");
+              console.log("future: " + h)
                   }
-                  else if (workhours[h]<currentTime){
-                    hour.setAttribute("class", "past");
-                    console.log("past : " + workhours[h]);
+            else if (workhours[h]<currentTime){
+             // hour.setAttribute("class", "past");
+              console.log("past : " + workhours[h]);
                   }
-                  else if (workhours[h]===currentTime){
-                    hour.setAttribute("class", "present");
-                   console.log("present : " +workhours[h]);
-          }
+            else  {
+           //   hour.setAttribute("class", "present");
+              console.log("present : " +workhours[h]);
+                  }
           };}
           
 
 populateTask();
 reviewTime();
-
+//cleanDay();
 
 
 function bringTask(){
