@@ -2,11 +2,11 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(document).ready(function(){});
+
+const workhours = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm"] 
 var day = $(".container_day1"); 
 var hour =$("#hour");
 var btnNextHour = $("#nextHour");
-
-
 
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should use the id in the containing time-block as a key to save the user input in local storage. HINT: What does `this` reference in the click listener
@@ -27,12 +27,20 @@ $("#currentDay").text(dayjs().format('[Today is] D MMMM YYYY [,] dddd'));
 $("#currentTime").text(dayjs().format('[Time Now:] H [:] mm'));
 console.log(dayjs().format('HH'));
 
-var divHour = document.createElement("div"); 
-divHour.id = "currentHour";
-//$("#hour").addClass('row time-block present');
-//divHour.setAttribute('class', 'future');
+function populateTask (){
+  for (let h=0; h<workhours.length; h++){
+      $("#entryHour").clone().appendTo(hour);
+      $("#task").clone().appendTo(hour);
+      $("#saveBtn").clone().appendTo(hour);
+      $("#entryHour").text(workhours[h]);
+  } ;
+  
+};
 
-day.append(divHour);
+populateTask();
+
+
+
 function bringTask(){
 
 $("#entryHour").clone().appendTo(hour);
