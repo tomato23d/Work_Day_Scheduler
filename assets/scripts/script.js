@@ -11,9 +11,9 @@ var hourPast =$(".past");
 var hourPresent =$(".present");
 var hourFuture =$(".future");
 var btnNextHour = $("#nextHour");
-//var currentTime = dayjs().format('ha');
-var currentTime = "12pm";
-var dayy = $("#currentDay")+1;
+var currentTime = dayjs().format('ha');
+//var currentTime = "12pm";
+//var dayy = $("#currentDay")+1;
 
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should use the id in the containing time-block as a key to save the user input in local storage. HINT: What does `this` reference in the click listener
