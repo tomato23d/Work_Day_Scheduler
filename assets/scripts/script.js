@@ -29,39 +29,53 @@ $("#currentTime").text(dayjs().format('[Time Now:] H [:] mm'));
 console.log(currentTime);
 
 
-function populateTask (){
- for (let i=0; i<workhours.length; i++){
-     $("#entryHour").clone().appendTo(hour);
-     $("#task").clone().appendTo(hour);
-     $("#saveBtn").clone().appendTo(hour);
-     $("#entryHour").text(workhours[i]);  
-     $("#hour").clone().appendTo(day);
+
+     //$("#entryHour").clone().appendTo(hour);
+    // $("#task").clone().appendTo(hour);
+   //  $("#saveBtn").clone().appendTo(hour);
+   //  $("#entryHour").text(workhours[i]);  
+   
+    // $("#hour").clone().appendTo(day);
      
     
- } ;  
-};
+
   function reviewTime(){
      for (let h=0; h<workhours.length; h++){
             if(workhours[h]>currentTime){
-              hour.addClass('future');
+              var newHour = $('<div>');
+              newHour.addClass('future');
+              $("#entryHour").clone().appendTo(newHour);
+              $("#task").clone().appendTo(newHour);
+              $("#saveBtn").clone().appendTo(newHour);
+              $("#entryHour").text(workhours[h]); 
+              newHour.appendTo(day);
               console.log("future: " + workhours[h]);
-              populateTask();
+             
               
                   }
             else if (workhours[h]<currentTime){
-              hour.addClass('past');
-              console.log("past : " + workhours[h]);
-              populateTask();
+              var newHour = $('<div>');
+              newHour.addClass('past');
+              $("#entryHour").clone().appendTo(newHour);
+              $("#task").clone().appendTo(newHour);
+              $("#saveBtn").clone().appendTo(newHour);
+              $("#entryHour").text(workhours[h]); 
+              newHour.appendTo(day);
+              console.log("past: " + workhours[h]);
                   }
             else  {
-              hour.addClass('present');
-              console.log("present : " + workhours[h]);
-              populateTask();
+              var newHour = $('<div>');
+              newHour.addClass('present');
+              $("#entryHour").clone().appendTo(newHour);
+              $("#task").clone().appendTo(newHour);
+              $("#saveBtn").clone().appendTo(newHour);
+              $("#entryHour").text(workhours[h]); 
+              newHour.appendTo(day);
+              console.log("present: " + workhours[h]);
                   }
           };}
           
 
-//populateTask();
 reviewTime();
 //cleanDay();
 
