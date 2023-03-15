@@ -1,70 +1,60 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
+
 $(document).ready(function(){});
 
-const workhours = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm"] 
+
+const workhours = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,22 ];
 
 var day = $(".container_day1");
-//var hour =document.getElementById("hour"); 
-//var hour = $ ("#hour"); 
 var hour = $(day.children[0])  ;
-var hourPast =$(".past");
-var hourPresent =$(".present");
-var hourFuture =$(".future");
-var btnNextHour = $("#nextHour");
-var currentTime = dayjs().format('ha');
-//var currentTime = "12pm";
-//var dayy = $("#currentDay")+1;
-console.log(hour);
+var divHour =  $(".hour");
+
+//var currentTime = dayjs().format('ha');
+//var dayy = dayjs().hour(5);
+var currentTime = dayjs().format('H');
+
 $(function () {
-  // TODO: Add a listener for click events on the save button. This code should use the id in the containing time-block as a key to save the user input in local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-  //
-  // TODO: Add code to apply the past, present, or future class to each time block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
- 
+
 });
 
 $("#currentDay").text(dayjs().format('[Today is] D MMMM YYYY [,] dddd'));
 $("#currentTime").text(dayjs().format('[Time Now:] H [:] mm'));
-console.log(currentTime);
 
 
-function populateTask (){
-  for (let i=0; i<workhours.length; i++){
-      $("#entryHour").clone().appendTo(hour);
-      $("#task").clone().appendTo(hour);
-      $("#saveBtn").clone().appendTo(hour);
-      $("#entryHour").text(workhours[i]);  
-      hour.appendTo(day);   
-  } ;  
-};
   function reviewTime(){
      for (let h=0; h<workhours.length; h++){
-            if(workhours[h]>currentTime){
-              hour.addClass('future');
-              console.log("future: " + workhours[h]);
-              populateTask();
-                  }
-            else if (workhours[h]<currentTime){
-              hour.addClass('past');
-              console.log("past : " + workhours[h]);
-                  }
-            else  {
-              hour.addClass('present');
-              console.log("present : " + workhours[h]);
-                  }
+            
+          var newHour = $('<div>');
+          newHour.id = h;
+          console.log("this hour id: " +newHour.id);
+          divHour.clone().appendTo(newHour);
+          $("#task").clone().appendTo(newHour);
+          $("#saveBtn").clone().appendTo(newHour);
+          divHour.text(workhours[h]);
+            
+              if(workhours[h]<currentTime){
+               newHour.addClass('past');
+              }
+
+              else if (workhours[h]>currentTime){
+               newHour.addClass('future');
+               $("#saveBtn").text("save");
+              }
+               else  {
+                newHour.addClass('present');
+                $("#saveBtn").text("save");
+                console.log("present: " + workhours[h]);
+              }
+
+               divHour.css({
+                 "background-color": "#06aed5",
+                  "color":"white", 
+                  "font-size": "30px", 
+                  "text-align": "center"
+                });
+                newHour.appendTo(day);
           };}
           
 
-//populateTask();
 reviewTime();
 //cleanDay();
 
@@ -77,6 +67,6 @@ $("#saveBtn").clone().appendTo(hour);
 }
 
 
-btnNextHour.click(bringTask);
+//btnNextHour.click(bringTask);
 
 
