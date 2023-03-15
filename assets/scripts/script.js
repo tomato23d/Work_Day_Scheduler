@@ -1,6 +1,6 @@
 
 $(document).ready(function(){});
-
+$(function jToDay() {
 
 const workhours = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,22 ];
 
@@ -15,9 +15,8 @@ var points = document.getElementById("points");
 //var dayy = dayjs().hour(5);
 var currentTime = dayjs().format('H');
 
-$(function () {
 
-});
+
 
 $("#currentDay").text(dayjs().format('[Today is] D MMMM YYYY [,] dddd'));
 $("#currentTime").text(dayjs().format('[Time Now:] H [:] mm'));
@@ -86,4 +85,6 @@ $(".createTaskBTN").click(createTask);
 
 //$("#saveBtn").click(bringTask);
 
+});
 
+jToDay();
