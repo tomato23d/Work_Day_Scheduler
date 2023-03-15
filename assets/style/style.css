@@ -52,7 +52,7 @@ header {
   width: 8%;
 }
 
-textarea {
+textarea, input {
   background: transparent;
   border: none;
   resize: none;
@@ -82,7 +82,7 @@ textarea {
   color: white;
   width: 10%;
 }
-.formatBTN {
+.formatBTN, .createTaskBTN {
   font-size: 30px;
   
 }

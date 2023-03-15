@@ -7,6 +7,9 @@ const workhours = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,22 ];
 var day = $(".container_day1");
 var hour = $(day.children[0])  ;
 var divHour =  $(".hour");
+var toDo = $(".task");
+var saveBtn = $(".saveBtn");
+var points = document.getElementById("points");
 
 //var currentTime = dayjs().format('ha');
 //var dayy = dayjs().hour(5);
@@ -25,9 +28,13 @@ $("#currentTime").text(dayjs().format('[Time Now:] H [:] mm'));
             
           var newHour = $('<div>');
           newHour.id = h;
-          console.log("this hour id: " +newHour.id);
+          //console.log("this hour id: " +newHour.id);
           divHour.clone().appendTo(newHour);
-          $("#task").clone().appendTo(newHour);
+          toDo.clone().appendTo(newHour);
+          toDo.text= "hello";
+          toDo.id = h+20;
+          console.log(toDo);
+         
           $("#saveBtn").clone().appendTo(newHour);
           divHour.text(workhours[h]);
             
@@ -56,17 +63,27 @@ $("#currentTime").text(dayjs().format('[Time Now:] H [:] mm'));
           
 
 reviewTime();
-//cleanDay();
+
+//points.addEventListener("click", function(event){
+//event.preventDefault();
+//var newTask = toDo.value;
+//console.log(newTask);
+//localStorage.setItem("newTask", JSON.stringify(newTask));
+//});
+
+function createTask(event){
+  event.preventDefault();
+  var newTask = toDo.value;
+  console.log(newTask);
+  localStorage.setItem("newTask", JSON.stringify(newTask));
+  };
 
 
-function bringTask(){
 
-$("#entryHour").clone().appendTo(hour);
-$("#task").clone().appendTo(hour);
-$("#saveBtn").clone().appendTo(hour);
-}
+$(".createTaskBTN").click(createTask);
 
+//$(".format.BTN").click(reviewTime);
 
-//btnNextHour.click(bringTask);
+//$("#saveBtn").click(bringTask);
 
 
