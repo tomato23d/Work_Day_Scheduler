@@ -1,20 +1,20 @@
 
 $(document).ready(function(){});
 
-//const workhours = ["7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm",  "5pm", "6pm"] 
+
 const workhours = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,22 ];
 
 var day = $(".container_day1");
 //var hour =document.getElementById("hour"); 
 //var hour = $ ("#hour"); 
 var hour = $(day.children[0])  ;
-var hourPast =$(".past");
-var hourPresent =$(".present");
-var hourFuture =$(".future");
-var btnNextHour = $("#nextHour");
+
+var divHour =  $("#entryHour");
+//var btnNextHour = $("#nextHour");
+
 //var currentTime = dayjs().format('ha');
 var currentTime = dayjs().format('H');
-//var currentTime = "12pm";
+
 
  //var dayy = dayjs().hour(5);
 
@@ -26,23 +26,19 @@ $("#currentDay").text(dayjs().format('[Today is] D MMMM YYYY [,] dddd'));
 $("#currentTime").text(dayjs().format('[Time Now:] H [:] mm'));
 console.log(currentTime);
 
-     //$("#entryHour").clone().appendTo(hour);
-    // $("#task").clone().appendTo(hour);
-   //  $("#saveBtn").clone().appendTo(hour);
-   //  $("#entryHour").text(workhours[i]);  
-   
-    // $("#hour").clone().appendTo(day);
-     
-  
+
   function reviewTime(){
      for (let h=0; h<workhours.length; h++){
             if(workhours[h]<currentTime){
               var newHour = $('<div>');
               newHour.addClass('past');
-              $("#entryHour").clone().appendTo(newHour);
+              divHour.clone().appendTo(newHour);
               $("#task").clone().appendTo(newHour);
               $("#saveBtn").clone().appendTo(newHour);
-              $("#entryHour").text(workhours[h]); 
+              divHour.text(workhours[h]);
+            divHour.css({
+              "background-color": "#06aed5",
+               "color":"white", "font-size": "30px", "text-align": "center"});
               newHour.appendTo(day);
               console.log("past: " + workhours[h]);
               
@@ -54,6 +50,7 @@ console.log(currentTime);
               $("#task").clone().appendTo(newHour);
               $("#saveBtn").clone().appendTo(newHour);
               $("#entryHour").text(workhours[h]); 
+              $("#saveBtn").text("save task");
               newHour.appendTo(day);
               console.log("future: " + workhours[h]);
                   }
@@ -82,6 +79,6 @@ $("#saveBtn").clone().appendTo(hour);
 }
 
 
-btnNextHour.click(bringTask);
+//btnNextHour.click(bringTask);
 
 

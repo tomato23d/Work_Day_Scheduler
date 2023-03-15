@@ -16,6 +16,7 @@ header {
   color: white;
 }
 
+
 .past {
   display: flex;
   justify-content: space-between;
@@ -47,6 +48,7 @@ header {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
+ 
   width: 8%;
 }
 
@@ -64,13 +66,13 @@ textarea {
   white-space: pre-wrap;
 }
 
-.time-block {
+/*.time-block {
   border-radius: 15px;
 }
 
 .row {
   border-top: 1px solid white;
-}
+}*/
 
 .saveBtn {
   border-left: 1px solid black;
@@ -80,8 +82,19 @@ textarea {
   color: white;
   width: 10%;
 }
+.formatBTN {
+  font-size: 30px;
+  
+}
 
-.saveBtn i:hover {
+.formatBTN:hover {opacity: 0.7; color: red; background-color: #06aed5;}
+
+.saveBtn:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
+/*
+.saveBtn i:hover {
+  font-size: 20px;
+  transition: all 0.3s ease-in-out;
+}*/
