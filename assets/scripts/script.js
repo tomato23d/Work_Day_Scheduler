@@ -2,17 +2,17 @@
 $(document).ready(function(){});
 function jToDay() {
 
-const workhours = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,22 ];
+const workhours = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];
 
 var day = $(".container_day1");
 //var hour = $(day.children[0])  ;
 var divHour =  $(".hour");
 var toDo = $(".task");
 var saveBtn = $(".saveBtn");
-var points = document.getElementById("points");
+var report = $("#scheduled");
+
 
 //var currentTime = dayjs().format('ha');
-//var dayy = dayjs().hour(5);
 var currentTime = dayjs().format('H');
 
 
@@ -25,14 +25,14 @@ $("#currentTime").text(dayjs().format('[Time Now:] H [:] mm'));
             
           var newHour = $('<div>');
           newHour.id = h;
-          //console.log("this hour id: " +newHour.id);
+          console.log("this hour id: " +newHour.id);
           divHour.clone().appendTo(newHour);
           toDo.clone().appendTo(newHour);
           toDo.text= "hello";
           toDo.id = h+20;
           console.log(toDo);
          
-          $("#saveBtn").clone().appendTo(newHour);
+          saveBtn.clone().appendTo(newHour);
           divHour.text(workhours[h]);
             
               if(workhours[h]<currentTime){
@@ -41,11 +41,11 @@ $("#currentTime").text(dayjs().format('[Time Now:] H [:] mm'));
 
               else if (workhours[h]>currentTime){
                newHour.addClass('future');
-               $("#saveBtn").text("save");
+               saveBtn.text("save");
               }
                else  {
                 newHour.addClass('present');
-                $("#saveBtn").text("save");
+                saveBtn.text("save");
                 console.log("present: " + workhours[h]);
               }
 
@@ -60,38 +60,38 @@ $("#currentTime").text(dayjs().format('[Time Now:] H [:] mm'));
           
 
 reviewTime();
-//var forHour = 1;
-//var taskSchedule = "";
 
-
-
-
+var taskSchedule = "";
 
 function scheduleTask(event){
   event.preventDefault();
+  
   var taskSchedule = window.prompt("Schedule a new task, please: ");
   var forHour = window.prompt("Schedule time to start: ");
+  var taskSchedule1 = {forHour, taskSchedule};
 
-  var taskSchedule1 = {
-    startTime: forHour,
-      planTask: taskSchedule
-   };
-  console.log(taskSchedule);
-  console.log(taskSchedule1);
   localStorage.setItem(forHour, JSON.stringify(taskSchedule1));
   renderTask();
 };
 
 
-
 function renderTask (){
-  var lastTask = JSON.parse(localStorage.getItem("taskSchedule1"));
-  {console.log(taskSchedule1)}};
+var taskSchedule = "";
+var forHour = "";
+var taskSchedule1 = "";
+
+//var lastTask = localStorage.getItem(forHour);
+var lastTask = JSON.parse(localStorage.getItem("taskSchedule"));
+//var lastTask = localStorage.getItem(lastTask.taskSchedule);
+  console.log(lastTask);
+
+  report.text= lastTask;
+  };
 
 
 $(".createTaskBTN").click(scheduleTask);
 
-//$("#saveBtn").click(createTask);
+saveBtn.click(scheduleTask);
 
 };
 
