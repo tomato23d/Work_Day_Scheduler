@@ -2,8 +2,10 @@
 $(document).ready(function(){});
 function jToDay() {
 
+// define working hours  
 const workhours = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];
 
+// define variables and time variables in dayjs format
 var day = $(".container_day1");
 //var hour = $(day.children[0])  ;
 var divHour =  $(".hour");
@@ -15,11 +17,11 @@ var report = $("#scheduled");
 //var currentTime = dayjs().format('ha');
 var currentTime = dayjs().format('H');
 
-
 $("#currentDay").text(dayjs().format('[Today is] D MMMM YYYY [,] dddd'));
 $("#currentTime").text(dayjs().format('[Time Now:] H [:] mm'));
 
 
+// populate hours with classes according to relation to the current time 
   function reviewTime(){
      for (let h=0; h<workhours.length; h++){
             
@@ -28,12 +30,13 @@ $("#currentTime").text(dayjs().format('[Time Now:] H [:] mm'));
           console.log("this hour id: " +newHour.id);
           divHour.clone().appendTo(newHour);
           toDo.clone().appendTo(newHour);
-          toDo.text= "hello";
+          //toDo.text= "hello";
           toDo.id = h+20;
           console.log(toDo);
          
           saveBtn.clone().appendTo(newHour);
           divHour.text(workhours[h]);
+
             
               if(workhours[h]<currentTime){
                newHour.addClass('past');
@@ -56,12 +59,17 @@ $("#currentTime").text(dayjs().format('[Time Now:] H [:] mm'));
                   "text-align": "center"
                 });
                 newHour.appendTo(day);
+                //$(day.children[0]).hide();
+        
+
           };}
           
 
 reviewTime();
 
+// define function to write task to the local storage
 var taskSchedule = "";
+
 
 function scheduleTask(event){
   event.preventDefault();
@@ -75,19 +83,21 @@ function scheduleTask(event){
 };
 
 
+// define function to retrieve the text entered to report on the page
 function renderTask (){
 var taskSchedule = "";
 var forHour = "";
 var taskSchedule1 = "";
 
-//var lastTask = localStorage.getItem(forHour);
+
 var lastTask = JSON.parse(localStorage.getItem("taskSchedule"));
 //var lastTask = localStorage.getItem(lastTask.taskSchedule);
   console.log(lastTask);
 
-  report.text= lastTask;
+  report.textContent= lastTask;
   };
 
+// define buttons to manage data entry
 
 $(".createTaskBTN").click(scheduleTask);
 
@@ -95,4 +105,5 @@ saveBtn.click(scheduleTask);
 
 };
 
+// the page function
 jToDay();
