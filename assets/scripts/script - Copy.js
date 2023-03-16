@@ -85,10 +85,10 @@ function scheduleTask(event){
 
 
 function renderTask (){
-  var lastTask = JSON.parse(localStorage.getItem("taskSchedule1"));
-  {console.log(taskSchedule1)}};
+  var lastTask = JSON.parse(localStorage.getItem("taskSchedule"));
+  {console.log(taskSchedule)}};
 
-
+//$(".createTaskBTN").click(createTask);
 $(".createTaskBTN").click(scheduleTask);
 
 //$("#saveBtn").click(createTask);
