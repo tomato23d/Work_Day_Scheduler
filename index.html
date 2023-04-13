@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="assets/style/style.css" />
+    <link rel="stylesheet" href="assets/style/style1.css" />
     <title>Work Day Scheduler</title>
   </head>
 
@@ -20,34 +20,21 @@
 
 
    
-      <div class="container_day1"> 
-           <div class="template">
-                  <div id = "entryHour" class="hour"> </div>
-                  
-                      <input type = "text" placeholder= "my task" class = "task"/>
-                      <button id = "saveBtn" class="saveBtn" aria-label="save">
-                            <i class="fas fa-save" aria-hidden="true"></i>
-                     </button>
+      <div id="container_day"> 
+          
                  
-           </div>
-       
-            
-
-            <br>
-                  <button class = "createTaskBTN">create task</button>  
-
-           
-            <p id = "scheduled">  </p>
-
+                     <form id = "input-form" class="template">
+                      <div id = "entryHour" class="hour">9am </div>
+                      <input type = "text" placeholder= "my task" id = "input-field"/>
+                    
+                      <button id = "saveBtn" class="saveBtn" aria-label="save">
+                            <i class="fas fa-save" aria-hidden="true">save</i>
+                     </button>
+                    </form>
       </div>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
-      integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
-      crossorigin="anonymous"
-    ></script>
-
-    <script src="assets/scripts/script.js"></script>
+       
+        
+   <!-- <script src="assets/scripts/script.js"></script>-->
+    <script src="assets/scripts/script1.js"></script>
   </body>
 </html>

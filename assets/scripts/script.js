@@ -16,9 +16,12 @@ var report = $("#scheduled");
 
 //var currentTime = dayjs().format('ha');
 var currentTime = dayjs().format('H');
+let date = new Date();
 
 $("#currentDay").text(dayjs().format('[Today is] D MMMM YYYY [,] dddd'));
+$("#currentDay1").append("JS says, today is "+date.getDate()+"."+(date.getMonth()+1)+"."+date.getFullYear());
 $("#currentTime").text(dayjs().format('[Time Now:] H [:] mm'));
+$("#currentTime1").append("JS says the time now is "+date.getHours()+ ":" + date.getMinutes());
 
 
 // populate hours with classes according to relation to the current time 
